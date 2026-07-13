@@ -1,0 +1,40 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#f0f2f5;color:#333}
+a{text-decoration:none;color:inherit}
+.mock-badge{display:inline-block;background:#faad14;color:#fff;font-size:11px;padding:2px 6px;border-radius:3px;margin-left:6px;font-weight:bold}
+.mock-banner{background:#fff7e6;border:1px solid #ffd591;color:#d48806;padding:8px 16px;text-align:center;font-size:13px;margin-bottom:0}
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.page-header h2{font-size:20px}
+.btn{padding:8px 16px;border:none;border-radius:4px;cursor:pointer;font-size:14px}
+.btn-primary{background:#1890ff;color:#fff}
+.btn-danger{background:#ff4d4f;color:#fff}
+.btn-default{background:#fff;border:1px solid #d9d9d9}
+.btn-sm{padding:4px 10px;font-size:12px}
+.table-card{background:#fff;border-radius:4px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #f0f0f0;font-size:14px}
+th{background:#fafafa;font-weight:600}
+tr:hover{background:#f5f5f5}
+.search-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.search-bar input,.search-bar select{padding:6px 12px;border:1px solid #d9d9d9;border-radius:4px;font-size:14px}
+.pagination{display:flex;justify-content:flex-end;gap:4px;margin-top:16px;align-items:center}
+.pagination button{padding:4px 10px;border:1px solid #d9d9d9;border-radius:4px;background:#fff;cursor:pointer}
+.pagination button.active{background:#1890ff;color:#fff;border-color:#1890ff}
+.pagination span{margin:0 8px;font-size:13px;color:#666}
+.form-card{background:#fff;border-radius:4px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.06);max-width:800px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;margin-bottom:4px;font-weight:500;font-size:14px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:8px 12px;border:1px solid #d9d9d9;border-radius:4px;font-size:14px}
+.form-group textarea{resize:vertical;min-height:60px}
+.status-tag{padding:2px 8px;border-radius:3px;font-size:12px}
+.status-draft{background:#f0f0f0;color:#666}
+.status-pending{background:#fff7e6;color:#d48806}
+.status-approved{background:#e6f7ff;color:#1890ff}
+.status-rejected{background:#fff1f0;color:#ff4d4f}
+.status-confirmed{background:#f6ffed;color:#52c41a}
+.status-completed{background:#f6ffed;color:#52c41a}
+.status-cancelled{background:#f0f0f0;color:#999}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-card{background:#fff;border-radius:4px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.06);text-align:center}
+.stat-card .num{font-size:32px;font-weight:bold;color:#1890ff}
+.stat-card .label{font-size:14px;color:#999;margin-top:4px}

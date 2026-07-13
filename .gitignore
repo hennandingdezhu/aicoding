@@ -1,0 +1,26 @@
+# Build output
+backend/target/
+frontend/dist/
+
+# Dependencies
+frontend/node_modules/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Codex internal config
+.config/
+
+# Logs
+*.log
+
+# Sensitive config (use application.example.yml as template)
+backend/src/main/resources/application.yml
+# Frontend env
+frontend/.env

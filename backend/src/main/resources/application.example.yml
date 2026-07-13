@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: warehouse-system
+  datasource:
+    url: jdbc:mysql://localhost:3306/warehouse_system?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: your_db_username
+    password: your_db_password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: change-me-to-a-random-secret-at-least-256-bits
+    expiration-ms: 7200000
+  upload:
+    dir: ./uploads
