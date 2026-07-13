@@ -27,6 +27,7 @@ public class TransferOrderController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) String status) {
+        if (pageSize > 100) pageSize = 100;
         Page<TransferOrderEntity> result = transferOrderService.list(status, PageRequest.of(page - 1, pageSize));
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));
     }

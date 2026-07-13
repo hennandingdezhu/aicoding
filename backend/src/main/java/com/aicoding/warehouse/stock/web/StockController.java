@@ -28,6 +28,7 @@ public class StockController {
             @RequestParam(required = false) Long productId,
             @RequestParam(required = false) Long warehouseId,
             @RequestParam(required = false) Long locationId) {
+        if (pageSize > 100) pageSize = 100;
         List<StockJpaEntity> all = stockJpaRepository.findWithFilters(productId, warehouseId, locationId);
         int start = (page - 1) * pageSize;
         int end = Math.min(start + pageSize, all.size());
@@ -39,7 +40,7 @@ public class StockController {
     public ApiResponse<StockJpaEntity> getByKeys(@RequestParam Long productId, @RequestParam Long warehouseId,
                                                   @RequestParam Long areaId, @RequestParam Long locationId) {
         var entities = stockJpaRepository.findByProductWarehouseAreaLocation(productId, warehouseId, areaId, locationId);
-        if (entities.isEmpty()) throw new BusinessException(404, "库存记录不存在");
+        if (entities.isEmpty()) throw new BusinessException(404, "閹煎瓨鎸搁悺銊ф媼閺夎法绉垮☉鎾崇Т閻°劑宕?);
         return ApiResponse.ok(entities.get(0));
     }
 
@@ -48,7 +49,7 @@ public class StockController {
                                          @RequestParam Long areaId, @RequestParam Long locationId,
                                          @RequestBody Map<String, BigDecimal> body) {
         var entities = stockJpaRepository.findByProductWarehouseAreaLocation(productId, warehouseId, areaId, locationId);
-        if (entities.isEmpty()) throw new BusinessException(404, "库存记录不存在");
+        if (entities.isEmpty()) throw new BusinessException(404, "閹煎瓨鎸搁悺銊ф媼閺夎法绉垮☉鎾崇Т閻°劑宕?);
         StockJpaEntity stock = entities.get(0);
         if (body.containsKey("warningMin")) stock.setWarningMin(body.get("warningMin"));
         if (body.containsKey("warningMax")) stock.setWarningMax(body.get("warningMax"));
@@ -61,6 +62,7 @@ public class StockController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) Long warehouseId) {
+        if (pageSize > 100) pageSize = 100;
         List<StockJpaEntity> all = stockJpaRepository.findWarnings(warehouseId);
         int start = (page - 1) * pageSize;
         int end = Math.min(start + pageSize, all.size());

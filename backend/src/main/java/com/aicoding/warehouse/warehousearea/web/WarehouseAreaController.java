@@ -25,6 +25,7 @@ public class WarehouseAreaController {
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) Long warehouseId,
             @RequestParam(required = false) String keyword) {
+        if (pageSize > 100) pageSize = 100;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         Page<WarehouseArea> result = warehouseAreaService.findAll(warehouseId, keyword, pageable);
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));

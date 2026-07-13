@@ -25,6 +25,7 @@ public class RoleController {
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(defaultValue = "") String keyword) {
+        if (pageSize > 100) pageSize = 100;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         return ApiResponse.ok(roleService.listRoles(keyword, pageable));
     }

@@ -34,6 +34,17 @@ public class FileController {
             @RequestParam(value = "businessType", required = false) String businessType,
             @RequestParam(value = "businessId", required = false) Long businessId,
             @AuthenticationPrincipal Long userId) throws IOException {
+        // 文件类型白名单
+        String contentType = file.getContentType();
+        String originalName = file.getOriginalFilename();
+        if (originalName != null && !originalName.matches(".*\\.(jpg|jpeg|png|gif|pdf|doc|docx|xls|xlsx|csv|txt|zip)$")) {
+            throw new BusinessException("不支持的文件类型");
+        }
+        // 限制文件大小 10MB
+        if (file.getSize() > 10 * 1024 * 1024) {
+            throw new BusinessException("文件大小不能超过10MB");
+        }
+
         Path dir = Paths.get(uploadDir);
         Files.createDirectories(dir);
 

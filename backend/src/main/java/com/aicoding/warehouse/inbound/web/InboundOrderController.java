@@ -28,6 +28,7 @@ public class InboundOrderController {
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) Long warehouseId) {
+        if (pageSize > 100) pageSize = 100;
         Page<InboundOrderEntity> result = inboundOrderService.list(status, warehouseId, PageRequest.of(page - 1, pageSize));
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));
     }

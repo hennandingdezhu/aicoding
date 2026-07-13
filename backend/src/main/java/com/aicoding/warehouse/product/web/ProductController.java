@@ -28,6 +28,7 @@ public class ProductController {
             @RequestParam(required = false) String keyword,
             @RequestParam(required = false) Long categoryId,
             @RequestParam(required = false) Integer status) {
+        if (pageSize > 100) pageSize = 100;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         Page<Product> result = productService.findAll(keyword, categoryId, status, pageable);
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));

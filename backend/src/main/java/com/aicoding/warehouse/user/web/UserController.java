@@ -24,6 +24,7 @@ public class UserController {
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(defaultValue = "") String keyword,
             @RequestParam(required = false) Integer status) {
+        if (pageSize > 100) pageSize = 100;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         return ApiResponse.ok(userService.listUsers(keyword, status, pageable));
     }

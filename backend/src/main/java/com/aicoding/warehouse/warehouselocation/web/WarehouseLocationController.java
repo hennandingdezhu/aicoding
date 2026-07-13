@@ -26,6 +26,7 @@ public class WarehouseLocationController {
             @RequestParam(required = false) Long warehouseId,
             @RequestParam(required = false) Long areaId,
             @RequestParam(required = false) String keyword) {
+        if (pageSize > 100) pageSize = 100;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         Page<WarehouseLocation> result = warehouseLocationService.findAll(warehouseId, areaId, keyword, pageable);
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));

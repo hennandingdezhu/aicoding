@@ -28,6 +28,7 @@ public class InventoryCheckController {
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) Long warehouseId,
             @RequestParam(required = false) String status) {
+        if (pageSize > 100) pageSize = 100;
         Page<InventoryCheckEntity> result = inventoryCheckService.list(warehouseId, status, PageRequest.of(page - 1, pageSize));
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));
     }

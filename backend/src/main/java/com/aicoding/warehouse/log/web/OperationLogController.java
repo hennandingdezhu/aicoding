@@ -25,6 +25,7 @@ public class OperationLogController {
             @RequestParam(defaultValue = "20") int pageSize,
             @RequestParam(required = false) String moduleName,
             @RequestParam(required = false) String operationType) {
+        if (pageSize > 100) pageSize = 100;
         Page<OperationLogEntity> result = operationLogRepository.findWithFilters(moduleName, operationType, PageRequest.of(page - 1, pageSize));
         return ApiResponse.ok(new PageResult<>(result.getContent(), result.getTotalElements(), page, pageSize));
     }
@@ -32,6 +33,6 @@ public class OperationLogController {
     @GetMapping("/{id}")
     public ApiResponse<OperationLogEntity> getById(@PathVariable Long id) {
         return ApiResponse.ok(operationLogRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(404, "操作日志不存在")));
+                .orElseThrow(() -> new BusinessException(404, "闁瑰灝绉崇紞鏃堝籍閵夈儳绠跺☉鎾崇Т閻°劑宕?)));
     }
 }

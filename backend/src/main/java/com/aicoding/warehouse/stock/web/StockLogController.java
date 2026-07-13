@@ -31,6 +31,7 @@ public class StockLogController {
             @RequestParam(required = false) Long productId,
             @RequestParam(required = false) Long warehouseId,
             @RequestParam(required = false) String changeType) {
+        if (pageSize > 100) pageSize = 100;
         Specification<StockLogJpaEntity> spec = (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             if (productId != null) predicates.add(cb.equal(root.get("productId"), productId));
@@ -45,6 +46,6 @@ public class StockLogController {
     @GetMapping("/{id}")
     public ApiResponse<StockLogJpaEntity> getById(@PathVariable Long id) {
         return ApiResponse.ok(stockLogJpaRepository.findById(id)
-                .orElseThrow(() -> new BusinessException(404, "库存流水不存在")));
+                .orElseThrow(() -> new BusinessException(404, "閹煎瓨鎸搁悺銊ッ规担瑙勫瘻濞戞挸绉撮悺銊╁捶?)));
     }
 }
