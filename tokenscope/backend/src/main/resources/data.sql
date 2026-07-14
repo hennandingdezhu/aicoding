@@ -1,0 +1,1 @@
+INSERT INTO budget_config (monthly_budget, alert_threshold, updated_at) VALUES (50.00, 0.80, NOW());
